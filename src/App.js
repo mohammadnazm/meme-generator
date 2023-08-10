@@ -11,8 +11,10 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
-      <h1>Hi</h1>
+    <div style={{ textAlign: "center" }}>
+      {templates.map(template => {
+        return <img src={template.url} alt={template.name} key={template.id} />
+      })}
     </div>
   )
 }
