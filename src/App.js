@@ -3,6 +3,7 @@ import "./App.css"
 
 function App() {
   const [templates, setTemplates] = useState([])
+  const [template, setTemplate] = useState()
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes").then(x =>
@@ -12,9 +13,20 @@ function App() {
 
   return (
     <div style={{ textAlign: "center" }}>
-      {templates.map(template => {
-        return <img src={template.url} alt={template.name} key={template.id} />
-      })}
+      {!template &&
+        templates.map(template => {
+          return (
+            <img
+              style={{ width: 200 }}
+              src={template.url}
+              alt={template.name}
+              key={template.id}
+              onClick={() => {
+                setTemplate(template)
+              }}
+            />
+          )
+        })}
     </div>
   )
 }
