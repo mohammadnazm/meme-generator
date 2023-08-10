@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./App.css"
+import Meme from "./components/Meme"
 
 function App() {
   const [templates, setTemplates] = useState([])
@@ -13,14 +14,12 @@ function App() {
 
   return (
     <div style={{ textAlign: "center" }}>
+      {template && <Meme template={template} />}
       {!template &&
         templates.map(template => {
           return (
-            <img
-              style={{ width: 200 }}
-              src={template.url}
-              alt={template.name}
-              key={template.id}
+            <Meme
+              template={template}
               onClick={() => {
                 setTemplate(template)
               }}
