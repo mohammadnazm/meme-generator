@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react"
-import "./App.css"
+import React, { useState, useEffect } from "react"
 import Meme from "./components/Meme"
 
 const objectToQueryParam = obj => {
@@ -9,7 +8,7 @@ const objectToQueryParam = obj => {
 
 function App() {
   const [templates, setTemplates] = useState([])
-  const [template, setTemplate] = useState()
+  const [template, setTemplate] = useState(null)
   const [topText, setTopText] = useState("")
   const [bottomText, setBottomText] = useState("")
   const [meme, setMeme] = useState(null)
@@ -23,7 +22,7 @@ function App() {
   if (meme) {
     return (
       <div style={{ textAlign: "center" }}>
-        <img src={meme} alt="custom meme" />
+        <img style={{ width: 200 }} src={meme} alt="custom meme" />
       </div>
     )
   }
@@ -39,8 +38,8 @@ function App() {
               template_id: template.id,
               text0: topText,
               text1: bottomText,
-              username: "mhamadnazm",
-              password: "Kakon+soft&2",
+              username: "xzk03017",
+              password: "xzk03017@cndps.com",
             }
             const response = await fetch(
               `https://api.imgflip.com/caption_image${objectToQueryParam(
@@ -48,7 +47,7 @@ function App() {
               )}`
             )
             const json = await response.json()
-            setMeme(json.data?.url)
+            setMeme(json?.data?.url)
           }}
         >
           <Meme template={template} />
@@ -67,7 +66,7 @@ function App() {
       )}
       {!template && (
         <>
-          <h2>Pick A template</h2>
+          <h1>Pick a template</h1>
           {templates.map(template => {
             return (
               <Meme
