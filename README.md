@@ -1,6 +1,6 @@
 # Meme generator
 
-Simple meme generator web app built with react js
+Simple meme generator web app built with React js
 
 ![ezgif com-gif-maker (1)](https://github.com/mohammadnazm/meme-generator/assets/63538356/c9344d5b-cdf2-4764-b9f2-f9d08d286189)
 
@@ -9,9 +9,9 @@ Simple meme generator web app built with react js
 2. Generate Meme from template. 
 ## Installation
 
-1. `git clone https://github.com/mohammadnazm/e-commerce-next.js.git`
+1. `git clone https://github.com/mohammadnazm/meme-generator.js.git`
 
-2. `cd e-commerce-next.js`
+2. `cd meme-generator.js`
 
 3. `npm install`
 
