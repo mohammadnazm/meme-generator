@@ -10,8 +10,9 @@ const objectToQueryParam = obj => {
 function App() {
   const [templates, setTemplates] = useState([])
   const [template, setTemplate] = useState()
-  const [topText, setTopText] = useState()
-  const [bottomText, setBottomText] = useState()
+  const [topText, setTopText] = useState("")
+  const [bottomText, setBottomText] = useState("")
+  const [meme, setMeme] = useState("")
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes").then(x =>
@@ -27,30 +28,33 @@ function App() {
             e.preventDefault()
             // add logic to create meme from api
             const params = {
-              template_id: "",
+              template_id: template.id,
               text0: topText,
               text1: bottomText,
               username: "mhamadnazm",
-              password: "mhamadnazm3@gmail.com",
+              password: "Kakon+soft&2",
             }
             const response = await fetch(
-              "https://api.imgflip.com/caption_image",
-              { body: JSON.stringify(params) }
+              `https://api.imgflip.com/caption_image${objectToQueryParam(
+                params
+              )}`
             )
+            const json = await response.json()
+            setMeme(json.data.url)
           }}
         >
           <Meme template={template} />
           <input
             placeholder="top text"
             value={topText}
-            onChange={e => setTopText(e)}
+            onChange={e => setTopText(e.target.value)}
           />
           <input
             placeholder="bottom text"
             value={bottomText}
-            onChange={e => setBottomText(e)}
+            onChange={e => setBottomText(e.target.value)}
           />
-          <button type="button">create meme</button>
+          <button type="submit">create meme</button>
         </form>
       )}
       {!template && (
